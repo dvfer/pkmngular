@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pkmngular": {
+      "hosting": {
+        "pkmngular": [
+          "pkmngular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pkmngular"
+  }
+}
