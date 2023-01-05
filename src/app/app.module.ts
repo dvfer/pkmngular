@@ -8,10 +8,13 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonServiceService } from './Services/pokemon-service.service';
+import { PkmnComponent } from './Components/pkmn/pkmn.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PkmnComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,9 +22,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     NgbModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [PokemonServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
