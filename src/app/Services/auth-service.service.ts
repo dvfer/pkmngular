@@ -34,13 +34,7 @@ export class AuthServiceService {
  *
  */
 
-  public get getObservableCurrentUser():Observable < UserInfo | null > | unknown {
-    try{
-      return (this.auth.user);
-    }
-    catch (error){
-      return (error)
-    }
-
+  public get getObservableCurrentUser():Observable < UserInfo | null >{
+    return this.auth.user
   }
 }
