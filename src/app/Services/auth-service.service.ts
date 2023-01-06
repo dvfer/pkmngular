@@ -8,22 +8,24 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthServiceService {
-  constructor( public auth: AngularFireAuth ) {
-    this.getObservableCurrentUser.subscribe(( value: UserInfo | null) => {
-      const user: UserInfo | null = value;
-      console.log(user);
-    } )
-  }
+  constructor( public auth: AngularFireAuth ) {}
+
 /**
- * Returns PREGUNTAR QUE PONER
- * @returns
+ * Provide Google authentification
  */
   async logIn(){
-    return await this.auth.signInWithPopup(new GoogleAuthProvider())
+    await this.auth.signInWithPopup(new GoogleAuthProvider())
   }
-
+/**
+ * Log out the current user authentificated
+ */
   async logOut(){
-    return await this.auth.signOut()
+    try {
+      await this.auth.signOut()
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 /**
  * Returns PREGUNTAR PQ LO UNICO QUE SE ME OCURRE ES REDUNDANTE CON LO DE ABAJO.
@@ -31,9 +33,14 @@ export class AuthServiceService {
  * @returns An observable with the user info or null
  *
  */
-  public get getObservableCurrentUser():Observable < UserInfo | null > {
-    return (this.auth.user);
-  }
-  onInit(){
+
+  public get getObservableCurrentUser():Observable < UserInfo | null > | unknown {
+    try{
+      return (this.auth.user);
+    }
+    catch (error){
+      return (error)
+    }
+
   }
 }
