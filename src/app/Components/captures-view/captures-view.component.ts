@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PokemonCapture } from 'src/app/Interfaces/pokemon-capture';
+import { PokemonCaptureServiceService } from 'src/app/Services/Pokemon/pokemon-capture-service.service';
 
 @Component({
   selector: 'app-captures-view',
@@ -6,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./captures-view.component.scss']
 })
 export class CapturesViewComponent implements OnInit {
-
-  constructor() { }
+  constructor( private pkmnService: PokemonCaptureServiceService ) { }
 
   ngOnInit(): void {
   }

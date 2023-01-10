@@ -28,7 +28,7 @@ export class AuthServiceService {
     }
   }
 /**
- * Returns PREGUNTAR PQ LO UNICO QUE SE ME OCURRE ES REDUNDANTE CON LO DE ABAJO.
+ * Watch current user
  *
  * @returns An observable with the user info or null
  *
