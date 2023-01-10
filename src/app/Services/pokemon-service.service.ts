@@ -12,7 +12,8 @@ export class PokemonServiceService {
   /**
    * Returns a random number between two numbers.
    *
-   *
+   * @param min - lower limit of the interval
+   * @param max - upper limit of the interval
    * @returns a random number.
    *
    */
