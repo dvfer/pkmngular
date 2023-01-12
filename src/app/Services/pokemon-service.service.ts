@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PokemonInterface } from '../Interfaces/pokemon-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class PokemonServiceService {
    *
    * @returns an observable.
    */
-  getPkmnObservable(): Observable< Object >{
-    return  this.http.get< Object >(`https://pokeapi.co/api/v2/pokemon/${this.randomInteger(1,905)}`)
+  getPkmnObservable(): Observable< PokemonInterface >{
+    return  this.http.get< PokemonInterface >(`https://pokeapi.co/api/v2/pokemon/${this.randomInteger(1,905)}`)
   }
 }
