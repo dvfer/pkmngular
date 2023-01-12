@@ -15,11 +15,20 @@ export class PokemonViewComponentComponent implements OnInit {
     this.currentSrcImg = this.pkmn.sprites.front_default;
   }
 
-
-  onMouseOver(){
+  /**
+   *
+   * When the mouse is over the pokémon, this shows its back.
+   *
+   */
+  onMouseOver(): void{
     this.currentSrcImg = this.pkmn.sprites.back_default;
   }
-  onMouseOut(){
+  /**
+   *
+   * When the mouse is no longer over the pokemon, the pokemon returns to its original state.
+   *
+   */
+  onMouseOut(): void{
     this.currentSrcImg = this.pkmn.sprites.front_default;
   }
 

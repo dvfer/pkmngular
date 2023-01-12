@@ -19,6 +19,12 @@ export class GrassViewComponent implements OnInit {
     this.genRandomPkmn()
     this.authObservable$ = this.authService.getObservableCurrentUser;
   }
+
+  /**
+   *
+   * Generate a random pokemon.
+   *
+   */
   genRandomPkmn(){
     this.pkmnObservable$ = this.pkmnService.getPkmnObservable()
   }

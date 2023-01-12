@@ -12,10 +12,10 @@ import { PokemonServiceService } from 'src/app/Services/Pokemon/pokemon-service.
   styleUrls: ['./pokeball-selector-component.component.scss']
 })
 export class PokeballSelectorComponentComponent implements OnInit {
-  items!: MenuItem[];
   @Input() pkmn!:PokemonInterface;
-  userInfo!: UserInfo|null;
   @Output("genRandomPkmn") genRandomPkmn: EventEmitter<void> = new EventEmitter();
+  userInfo!: UserInfo | null;
+  items!: MenuItem[];
 
   constructor( public pkmnService: PokemonServiceService, public auth: AuthServiceService, public pkmnCaptureService: PokemonCaptureServiceService) { }
   ngOnInit(): void {
@@ -31,20 +31,41 @@ export class PokeballSelectorComponentComponent implements OnInit {
     })
   }
 
+  /**
+   * Returns a boolean, true if the throw is success, false if the throw is failure.
+   *
+   * @param probability - The probability associated with the pokeball type.
+   * @returns A boolean associated with the throw success.
+   */
   throwPokeball(probability: number): Boolean{
     const rand = Math.random();
     return (rand <= probability)
   }
-  capture(bool: Boolean, capture: PokemonCapture ){
+
+  /**
+   *
+   * Using the PokemonCaptureService send to firestore the information about the capture.
+   *
+   * @param bool - The capture success.
+   *
+   * @param capture - Information about the capture, userId, pokemon Id, etc.
+   *
+   */
+  capture(bool: Boolean, capture: PokemonCapture ): void{
     if (bool) {
       this.pkmnCaptureService.addCapture(capture)
     }
     else{
-      console.log('no')
-
+      console.log('Oh no! The pokemon broke free!')
     }
     this.genRandomPkmn.emit()
   }
+  /**
+   * Returns a data structure with the capture information.
+   *
+   * @returns the information about the capture.
+   *
+   */
   genPokemonCapture(): PokemonCapture{
     return {
       userId: this.userInfo!.uid,
