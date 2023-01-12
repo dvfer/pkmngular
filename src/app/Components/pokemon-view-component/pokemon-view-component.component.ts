@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { PokemonInterface } from 'src/app/Interfaces/pokemon-interface';
-import { PokemonServiceService } from 'src/app/Services/pokemon-service.service';
+import { PokemonServiceService } from 'src/app/Services/Pokemon/pokemon-service.service';
 
 @Component({
   selector: 'app-pokemon-view-component',

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInfo } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { PokemonInterface } from 'src/app/Interfaces/pokemon-interface';
-import { PokemonServiceService } from 'src/app/Services/pokemon-service.service';
+import { AuthServiceService } from 'src/app/Services/Auth/auth-service.service';
+import { PokemonServiceService } from 'src/app/Services/Pokemon/pokemon-service.service';
 
 @Component({
   selector: 'app-grass-view',
@@ -10,10 +12,12 @@ import { PokemonServiceService } from 'src/app/Services/pokemon-service.service'
 })
 export class GrassViewComponent implements OnInit {
   pkmnObservable$!: Observable< PokemonInterface >
-  constructor( public pkmnService: PokemonServiceService ) { }
+  authObservable$!: Observable < UserInfo | null >
+  constructor( public pkmnService: PokemonServiceService, public authService:AuthServiceService ) { }
 
   ngOnInit(): void {
     this.genRandomPkmn()
+    this.authObservable$ = this.authService.getObservableCurrentUser;
   }
   genRandomPkmn(){
     this.pkmnObservable$ = this.pkmnService.getPkmnObservable()

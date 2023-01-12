@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthServiceService } from 'src/app/Services/auth-service.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/Services/Auth/auth-service.service';
 import { UserInfo } from "firebase/auth";
 
 @Component({

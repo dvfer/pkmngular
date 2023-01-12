@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { user, UserInfo } from '@angular/fire/auth';
 import {MenuItem} from 'primeng/api';
+import { PokemonCapture } from 'src/app/Interfaces/pokemon-capture';
 import { PokemonInterface } from 'src/app/Interfaces/pokemon-interface';
-import { AuthServiceService } from 'src/app/Services/auth-service.service';
-import { PokemonServiceService } from 'src/app/Services/pokemon-service.service';
+import { AuthServiceService } from 'src/app/Services/Auth/auth-service.service';
+import { PokemonCaptureServiceService } from 'src/app/Services/Pokemon/pokemon-capture-service.service';
+import { PokemonServiceService } from 'src/app/Services/Pokemon/pokemon-service.service';
 @Component({
   selector: 'app-pokeball-selector-component',
   templateUrl: './pokeball-selector-component.component.html',
@@ -11,35 +14,51 @@ import { PokemonServiceService } from 'src/app/Services/pokemon-service.service'
 export class PokeballSelectorComponentComponent implements OnInit {
   items!: MenuItem[];
   @Input() pkmn!:PokemonInterface;
+  userInfo!: UserInfo|null;
   @Output("genRandomPkmn") genRandomPkmn: EventEmitter<void> = new EventEmitter();
-  constructor( public pkmnService: PokemonServiceService, public auth: AuthServiceService) { }
+
+  constructor( public pkmnService: PokemonServiceService, public auth: AuthServiceService, public pkmnCaptureService: PokemonCaptureServiceService) { }
   ngOnInit(): void {
     this.items = [
       {label: 'Let Escape', command : () =>  this.genRandomPkmn.emit()},
-      {label: 'Poké Ball', icon: 'pokeball',command : () => this.capture(this.throwPokeball(0.25)) },
-      {label: 'Ultra Ball', icon: 'ultraball',command : () => this.capture(this.throwPokeball(0.70)) },
-      {label: 'Master Ball', icon: 'masterball',command : () => this.capture(this.throwPokeball(1) )},
+      {label: 'Poké Ball', icon: 'pokeball',command : () => this.capture(this.throwPokeball(0.25), this.genPokemonCapture()) },
+      {label: 'Ultra Ball', icon: 'ultraball',command : () => this.capture(this.throwPokeball(0.70), this.genPokemonCapture()) },
+      {label: 'Master Ball', icon: 'masterball',command : () => this.capture(this.throwPokeball(1), this.genPokemonCapture()) },
     ];
+    this.auth.getObservableCurrentUser.subscribe( (value: UserInfo|null) => {
+      if (value){
+        this.userInfo = value;}
+    })
   }
 
   throwPokeball(probability: number): Boolean{
     const rand = Math.random();
-    if (rand <= probability){
-      return true
-    }
-    else{
-      return false
-    }
-    }
-  capture(a: Boolean){
-    if (a) {
-      console.log('si')
+    return (rand <= probability)
+  }
+  capture(bool: Boolean, capture: PokemonCapture ){
+    if (bool) {
+      this.pkmnCaptureService.addCapture(capture)
     }
     else{
       console.log('no')
 
     }
     this.genRandomPkmn.emit()
+  }
+  genPokemonCapture(): PokemonCapture{
+    return {
+      userId: this.userInfo!.uid,
+
+      pokemonId: this.pkmn.id,
+
+      captureTime: new Date(),
+
+      pokemonName: this.pkmn.name,
+
+      pokemonType: this.pkmn.types.length > 1 ? ( this.pkmn.types[0].type.name + '-' + this.pkmn.types[1].type.name) : ( this.pkmn.types[0].type.name),
+
+      pokemonImageUrl: this.pkmn.sprites.front_default
+    }
   }
 }
 
