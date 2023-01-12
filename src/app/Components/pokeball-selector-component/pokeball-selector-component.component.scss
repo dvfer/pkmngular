@@ -1,0 +1,18 @@
+:host ::ng-deep {
+  .pokeball {
+      width: 24px;
+      height: 24px;
+      background-image: url("https://images.wikidexcdn.net/mwuploads/wikidex/8/87/latest/20090606115000/Pok%C3%A9_Ball.png");
+  };
+  .ultraball {
+    width: 24px;
+    height: 24px;
+    background-image: url("https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20120312153158/Ultra_Ball.png");
+
+  };
+  .masterball{
+    width: 24px;
+    height: 24px;
+    background-image: url("https://images.wikidexcdn.net/mwuploads/wikidex/e/ee/latest/20110105163656/Master_Ball.png");
+  }
+}

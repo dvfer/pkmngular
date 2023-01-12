@@ -1,0 +1,11 @@
+<div class="container">
+  <p-card *ngIf="pkmn.types.length > 1 ; else  singleType" [header]="pkmn.name | titlecase " [style]="{'text-align':'center'}" [subheader]="( pkmn.types[0].type.name + '-' + pkmn.types[1].type.name)" >
+    <img [src]="currentSrcImg" alt="" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
+  </p-card>
+</div>
+
+<ng-template #singleType>
+  <p-card [header]="pkmn.name | titlecase " [style]="{'text-align':'center'}" [subheader]="(pkmn.types[0].type.name)">
+    <img [src]="currentSrcImg" alt="" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
+  </p-card>
+</ng-template>

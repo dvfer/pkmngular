@@ -16,14 +16,18 @@ import { GrassViewComponent } from './Components/grass-view/grass-view.component
 import { CapturesViewComponent } from './Components/captures-view/captures-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonServiceService } from './Services/pokemon-service.service';
-import { PkmnComponent } from './Components/pkmn/pkmn.component';
-
+import { PokemonViewComponentComponent } from './Components/pokemon-view-component/pokemon-view-component.component';
+import { PokeballSelectorComponentComponent } from './Components/pokeball-selector-component/pokeball-selector-component.component';
+import {MenuModule} from 'primeng/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
     declarations: [
         AppComponent,
         RootViewComponent,
         GrassViewComponent,
-        CapturesViewComponent
+        CapturesViewComponent,
+        PokemonViewComponentComponent,
+        PokeballSelectorComponentComponent
     ],
     providers: [
         AuthServiceService,
@@ -35,12 +39,15 @@ import { PkmnComponent } from './Components/pkmn/pkmn.component';
         BrowserModule,
         AppRoutingModule,
         NgbModule,
+        BrowserAnimationsModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
         CardModule,
         HttpClientModule,
+        MenuModule,
+
     ],
-    
+
 })
 export class AppModule { }

@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CapturesViewComponent } from './Components/captures-view/captures-view.component';
 import { GrassViewComponent } from './Components/grass-view/grass-view.component';
 import { RootViewComponent } from './Components/root-view/root-view.component';
-
+import { AngularFireAuthGuard , redirectUnauthorizedTo} from '@angular/fire/compat/auth-guard';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const routes: Routes = [
   {
     path: '',
@@ -11,11 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'grass',
-    component: GrassViewComponent,
-  },
+    component: GrassViewComponent, canActivate: [AngularFireAuthGuard],data: { authGuardPipe: redirectUnauthorizedToLogin }},
+
   {
     path: 'captures',
-    component: CapturesViewComponent,
+    component: CapturesViewComponent, canActivate: [AngularFireAuthGuard],
   }
 ];
 
