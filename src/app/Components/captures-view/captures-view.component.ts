@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfo } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { PokemonData } from 'src/app/Interfaces/pokemon-data';
 import { AuthServiceService } from 'src/app/Services/Auth/auth-service.service';
 import { PokemonCaptureServiceService } from 'src/app/Services/Pokemon/pokemon-capture-service.service';
@@ -9,25 +9,16 @@ import { PokemonCaptureServiceService } from 'src/app/Services/Pokemon/pokemon-c
   templateUrl: './captures-view.component.html',
   styleUrls: ['./captures-view.component.scss']
 })
-export class CapturesViewComponent implements OnInit {
-  observablePkmn$!: Observable< PokemonData[] >;
-  constructor(public auth: AuthServiceService, public pkmnService: PokemonCaptureServiceService) { }
-
-  ngOnInit(): void {
-    this.auth.getObservableCurrentUser.subscribe( (value: UserInfo | null) => {
-      if (value){
-        this.assign(value);
+export class CapturesViewComponent {
+  observablePkmn$: Observable< PokemonData[] | null> = this.auth.getObservableCurrentUser.pipe(
+    switchMap( (value : UserInfo | null) => {
+      if (value === null){
+        return of(null);
       }
-    });
-    }
-  /**
-   *
-   * Set the value of observablePkmn$
-   *
-   */
-  async assign(userInfo: UserInfo){
-    this.observablePkmn$ = this.pkmnService.getCaptures(userInfo.uid);
-  }
+      return this.pkmnService.getCaptures(value.uid);
+    })
+  );
+  constructor(public auth: AuthServiceService, public pkmnService: PokemonCaptureServiceService) { }
   /**
    *
    * Delete a pokemon with a certain id.
