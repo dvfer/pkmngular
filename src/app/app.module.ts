@@ -20,6 +20,7 @@ import { PokemonViewComponentComponent } from './Components/pokemon-view-compone
 import { PokeballSelectorComponentComponent } from './Components/pokeball-selector-component/pokeball-selector-component.component';
 import {MenuModule} from 'primeng/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         GrassViewComponent,
         CapturesViewComponent,
         PokemonViewComponentComponent,
-        PokeballSelectorComponentComponent
+        PokeballSelectorComponentComponent,
+
     ],
     providers: [
         AuthServiceService,
@@ -37,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        ButtonModule,
         AppRoutingModule,
         NgbModule,
         BrowserAnimationsModule,

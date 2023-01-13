@@ -1,10 +1,11 @@
+import { Timestamp } from "@angular/fire/firestore";
 export interface PokemonCapture {
 
   userId: string;
 
   pokemonId: string;
 
-  captureTime: Date;
+  captureTime: Timestamp ;
 
   pokemonName: string;
 

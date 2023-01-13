@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { user, UserInfo } from '@angular/fire/auth';
+import { UserInfo } from '@angular/fire/auth';
+import {  Timestamp } from '@firebase/firestore';
 import {MenuItem} from 'primeng/api';
 import { PokemonCapture } from 'src/app/Interfaces/pokemon-capture';
 import { PokemonInterface } from 'src/app/Interfaces/pokemon-interface';
@@ -72,7 +73,7 @@ export class PokeballSelectorComponentComponent implements OnInit {
 
       pokemonId: this.pkmn.id,
 
-      captureTime: new Date(),
+      captureTime: Timestamp.fromDate(new Date()),
 
       pokemonName: this.pkmn.name,
 

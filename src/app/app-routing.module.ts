@@ -13,11 +13,10 @@ const routes: Routes = [
   {
     path: 'grass',
     component: GrassViewComponent, canActivate: [AngularFireAuthGuard],data: { authGuardPipe: redirectUnauthorizedToLogin }},
-
   {
     path: 'captures',
-    component: CapturesViewComponent, canActivate: [AngularFireAuthGuard],
-  }
+    component: CapturesViewComponent, canActivate: [AngularFireAuthGuard],data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
 ];
 
 @NgModule({
