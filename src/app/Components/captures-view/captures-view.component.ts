@@ -20,11 +20,21 @@ export class CapturesViewComponent implements OnInit {
       }
     });
     }
-
+  /**
+   *
+   * Set the value of observablePkmn$
+   *
+   */
   async assign(userInfo: UserInfo){
     this.observablePkmn$ = this.pkmnService.getCaptures(userInfo.uid);
   }
-
+  /**
+   *
+   * Delete a pokemon with a certain id.
+   *
+   * @params docId - id of the document associated to a capture.
+   *
+   */
   delete(docId: string){
     this.pkmnService.delCapture(docId);
   }
