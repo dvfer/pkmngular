@@ -13,7 +13,6 @@ export class RootViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getObservableCurrentUser.subscribe( (value: UserInfo | null) => {
-      console.log(value);
       this.authState = value;
     } )
   }

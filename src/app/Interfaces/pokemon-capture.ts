@@ -11,6 +11,8 @@ export interface PokemonCapture {
 
   pokemonType: string;
 
-  pokemonImageUrl: string;
+  pokemonImageUrlFront: string;
+
+  pokemonImageUrlBack: string;
 
 }

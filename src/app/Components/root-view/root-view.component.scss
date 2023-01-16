@@ -1,9 +1,25 @@
-#logIn {
-  background-image: url(https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png);
-  height: 100vh;
+.body{
+  margin: 10px;
 }
+.img-fluid{
+  background:url(https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png);
+  min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  overflow-y: hidden;
+  overflow-x: hidden;
+ }
+.logged{
+  background: url(https://raw.githubusercontent.com/libretro/common-overlays/master/borders/gba-4k.png);
+  min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  overflow-y: hidden;
+  overflow-x: hidden;
 
-#loggedIn{
-  background-image: url(https://initiate.alphacoders.com/images/310/cropped-1920-1080-310611.jpg?3503);
-  height: 100vh;
+}
+.d-inline-flex{
+  gap: 10px;
 }

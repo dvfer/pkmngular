@@ -79,7 +79,9 @@ export class PokeballSelectorComponentComponent implements OnInit {
 
       pokemonType: this.pkmn.types.length > 1 ? ( this.pkmn.types[0].type.name + '-' + this.pkmn.types[1].type.name) : ( this.pkmn.types[0].type.name),
 
-      pokemonImageUrl: this.pkmn.sprites.front_default
+      pokemonImageUrlFront: this.pkmn.sprites.front_default,
+
+      pokemonImageUrlBack: this.pkmn.sprites.back_default
     }
   }
 }
