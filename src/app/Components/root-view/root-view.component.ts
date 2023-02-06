@@ -10,7 +10,6 @@ import { UserInfo } from "firebase/auth";
 export class RootViewComponent implements OnInit {
   constructor( public authService: AuthServiceService ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

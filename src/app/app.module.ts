@@ -14,6 +14,10 @@ import { RootViewComponent } from './Components/root-view/root-view.component';
 import {CardModule} from 'primeng/card';
 import { GrassViewComponent } from './Components/grass-view/grass-view.component';
 import { CapturesViewComponent } from './Components/captures-view/captures-view.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonServiceService } from './Services/pokemon-service.service';
+import { PkmnComponent } from './Components/pkmn/pkmn.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -23,7 +27,8 @@ import { CapturesViewComponent } from './Components/captures-view/captures-view.
     ],
     providers: [
         AuthServiceService,
-        { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+        { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+        PokemonServiceService
     ],
     bootstrap: [AppComponent],
     imports: [
@@ -34,6 +39,7 @@ import { CapturesViewComponent } from './Components/captures-view/captures-view.
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
         CardModule,
-    ]
+        HttpClientModule,
+    ],
 })
 export class AppModule { }
