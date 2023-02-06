@@ -1,0 +1,16 @@
+<div id="logIn" class="bg-image" *ngIf="authState === null; else authTrue">
+  <div  class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <p-card class="shadow-2-strong ">
+      <button class="btn btn-danger" (click)="authService.logIn()"> Log-in with Google <i class="pi pi-google"></i></button>
+    </p-card>
+  </div>
+</div>
+<ng-template #authTrue>
+  <div id="loggedIn" class="bg-image">
+    <button  class="btn btn-secondary" (click)="authService.logOut()" > LogOut </button>
+    <button class="btn btn-success" routerLink="grass">Gotta cath'em all</button>
+    <button class="btn btn-info" routerLink="captures">Capture History</button>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>
