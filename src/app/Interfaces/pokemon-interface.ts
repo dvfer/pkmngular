@@ -14,7 +14,6 @@ export interface Sprites {
   front_shiny: string;
   front_shiny_female?: any;
   current: string;
-
 }
 export interface Type2 {
   name: string;
