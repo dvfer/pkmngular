@@ -1,1 +1,11 @@
-<div class="bg-image"></div>
+<div class="bg-image d-flex flex-row min-vh-100 justify-content-center align-items-center">
+  <div class="d-flex flex-row" *ngIf="( pkmnObservable$| async ) as pkmn;else loading">
+    <app-pokemon-view-component [pkmn] = "pkmn" ></app-pokemon-view-component>
+    <app-pokeball-selector-component [pkmn] = "pkmn" (genRandomPkmn)="genRandomPkmn()" ></app-pokeball-selector-component>
+  </div>
+</div>
+<ng-template #loading>
+  <p-card>
+    Loading stuff...
+  </p-card>
+</ng-template>

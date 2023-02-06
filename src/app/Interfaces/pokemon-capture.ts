@@ -6,7 +6,7 @@ export interface PokemonCapture {
 
   captureTime: Date;
 
-  pokemonNmae: string;
+  pokemonName: string;
 
   pokemonType: string;
 

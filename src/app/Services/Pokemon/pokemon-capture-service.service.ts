@@ -49,4 +49,3 @@ export class PokemonCaptureServiceService {
     return this.afs.collection< PokemonCapture >('captures', ref => {return ref.where('userId', '==', userId)}).valueChanges();
   }
 }
-
