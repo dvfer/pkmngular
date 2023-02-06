@@ -8,14 +8,8 @@ import { UserInfo } from "firebase/auth";
   styleUrls: ['./root-view.component.scss']
 })
 export class RootViewComponent implements OnInit {
-  authState!: UserInfo | null;
   constructor( public authService: AuthServiceService ) { }
 
-  ngOnInit(): void {
-    this.authService.getObservableCurrentUser.subscribe( (value: UserInfo | null) => {
-      console.log(value);
-      this.authState = value;
-    } )
-  }
+  ngOnInit(): void {}
 
 }

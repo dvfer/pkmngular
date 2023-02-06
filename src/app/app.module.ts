@@ -41,6 +41,5 @@ import { PkmnComponent } from './Components/pkmn/pkmn.component';
         CardModule,
         HttpClientModule,
     ],
-    
 })
 export class AppModule { }
