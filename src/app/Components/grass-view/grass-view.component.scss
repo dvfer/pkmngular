@@ -1,6 +1,10 @@
-// .bg-image{
-//   background-image: url( https://wallpaperaccess.com/full/3551101.png );
-//   height: 100vh;
-//   background-size:contain;
-//   background-repeat:no-repeat;
-// }
+.body{
+  background: url(https://raw.githubusercontent.com/libretro/common-overlays/master/borders/gba-4k.png);
+  min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+}

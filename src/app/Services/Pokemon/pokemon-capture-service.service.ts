@@ -2,6 +2,7 @@ import { Injectable} from '@angular/core';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { Observable} from 'rxjs';
 import { PokemonCapture } from 'src/app/Interfaces/pokemon-capture';
+import { PokemonData } from 'src/app/Interfaces/pokemon-data';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,7 @@ export class PokemonCaptureServiceService {
   * @returns An observable with captures of the current user
   *
   */
-  getCaptures(userId: string): Observable< PokemonCapture[] >{
-    return this.afs.collection< PokemonCapture >('captures', ref => {return ref.where('userId', '==', userId)}).valueChanges();
+  getCaptures(userId: string): Observable< PokemonData[] >{
+    return this.afs.collection< PokemonCapture >('captures', ref => {return ref.where('userId', '==', userId)}).valueChanges({ idField: 'docId' });
   }
 }

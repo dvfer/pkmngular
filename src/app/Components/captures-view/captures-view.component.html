@@ -1,0 +1,17 @@
+<div class="body">
+  <button pButton type="button" routerLink="" label="Menu" class="p-button-secondary" style="margin: 5px;"></button>
+  <div *ngIf="(observablePkmn$ | async ) as pkmnList" class="d-flex flex-row flex-xl-wrap overflow-auto min-vh-100 justify-content-center align-items-center" >
+    <p-card *ngFor="let pkmn of pkmnList" [header]="pkmn.pokemonName | titlecase " [subheader]="pkmn.pokemonType" class="ext-wrap" [style]="{'text-align':'center','width':'260px', 'overflow-wrap': 'break-word'}" >
+      <div class="d-flex flex-column">
+        <img [src]="pkmn.pokemonImageUrlFront" alt=""
+        (mouseover)="pkmn.currentImg =  pkmn.pokemonImageUrlFront;pkmn.pokemonImageUrlFront = pkmn.pokemonImageUrlBack"
+        (mouseout)="pkmn.pokemonImageUrlFront = pkmn.currentImg!;"
+        >
+        {{  (pkmn.captureTime).toDate() | date: 'dd/MM/yyyy'}}
+      </div>
+        <ng-template pTemplate="footer">
+        <p-button label="Release" (click)="delete(pkmn.docId)" icon="pi pi-times"></p-button>
+    </ng-template>
+    </p-card>
+  </div>
+</div>
