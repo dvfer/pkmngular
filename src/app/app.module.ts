@@ -8,7 +8,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { AuthServiceService } from './Services/auth-service.service';
+import { AuthServiceService } from './Services/Auth/auth-service.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { RootViewComponent } from './Components/root-view/root-view.component';
 import {CardModule} from 'primeng/card';
