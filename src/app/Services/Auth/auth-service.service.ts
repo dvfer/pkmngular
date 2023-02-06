@@ -28,7 +28,7 @@ export class AuthServiceService {
     }
   }
 /**
- * Watch user info.
+ * Watch current user
  *
  * @returns An observable with the user info or null
  *

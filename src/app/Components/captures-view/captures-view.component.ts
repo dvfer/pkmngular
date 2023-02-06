@@ -6,6 +6,7 @@ import { PokemonData } from 'src/app/Interfaces/pokemon-data';
 import { PokemonInterface } from 'src/app/Interfaces/pokemon-interface';
 import { AuthServiceService } from 'src/app/Services/Auth/auth-service.service';
 import { PokemonCaptureServiceService } from 'src/app/Services/Pokemon/pokemon-capture-service.service';
+
 @Component({
   selector: 'app-captures-view',
   templateUrl: './captures-view.component.html',
